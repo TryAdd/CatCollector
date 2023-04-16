@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Cat List</h1>
+{% for cat in cats %}
+<div class="card">
+<a href="{% url 'detail' cat.id %}">
+  <div class="card-content">
+    <div class="flex-container">
+      <div>
+        <span class="card-title">{{ cat.name }}</span>
+        <p>Breed: {{ cat.breed }}</p>
+        <p>Description: {{ cat.description }}</p>
+        {% if cat.age > 0 %}
+        <p>Age: {{ cat.age }}</p>
+        {% else %}
+        <p>Age: Kitten</p>
+        {% endif %}
+      </div>
+      <div>
+        {% load static %} 
+        <img width="100px" height="100px" src={% static cat.image|cut:'main_app/static/' %} />
+      </div>
+    </div>
+</a>
+  </div>
+</div>
+  {% endfor %} {% endblock %}
+
+
+
+
+
+
+

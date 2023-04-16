@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cat Collector</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar-fixed">
+        <div class="nav-wrapper black">
+          <ul>
+            <li>
+              <a href="{% url 'home' %}" class="left brand-logo"
+                >&nbsp; &nbsp; Cat Collector</a
+              >
+            </li>
+          </ul>
+
+          <ul class="right">
+            <li><a href="{% url 'home' %}"> Go back </a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            {%  if user.is_authenticated %}
+            <li><a href="{% url 'index' %}">View All My Cats</a></li>
+            <li><a href="{% url 'cats_create' %}">Add new cat</a></li>
+            <li><a href="{% url 'toys_create' %}">Add a Toys</a></li>
+            <li><a href="{% url 'toys_index' %}">view all Toys</a></li>
+            <li><a href="{% url 'logout' %}">Log Out</a></li>
+            {%else%}
+              <li><a href="{% url 'login' %}">Log in</a></li>
+              <li><a href="{% url 'signup' %}">Sign Up</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container">{% block content %} {% endblock %}</main>
+    <footer class="page-footer black">
+      <div class="right">All Rights Reserved, &copy; 2023 Cat Collector</div>
+    </footer>
+  </body>
+</html>

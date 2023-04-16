@@ -1,0 +1,17 @@
+{% extends 'base.html' %} 
+{% block content %} 
+
+<form action="" method="POST" enctype="multipart/form-data">
+    <!--? for ever we take input mn user -->
+    {% csrf_token %}
+    <table>
+        <!-- it will render all table -->
+        {{ form.as_p }}
+    </table>
+    <input type="submit" value="Submit!" class="btn">
+</form>
+
+
+
+
+{% endblock %}
